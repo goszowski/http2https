@@ -11,6 +11,7 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$controller = 'ProxyController@handle';
+
+$router->get('/{any:.*}', ['as'=>'root.proxy.get', 'uses'=>$controller]);
+$router->post('/{any:.*}', ['as'=>'root.proxy.post', 'uses'=>$controller]);
